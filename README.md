@@ -8,7 +8,7 @@
 
 ## Introduction
 
-`react-imgpro` is a image processing component for React. This component process an image with supplied filters as props and returns a [base64](https://en.wikipedia.org/wiki/Base64) image. 
+`react-imgpro` is a image processing component for React. This component process an image with filters supplied as props and returns a [base64](https://en.wikipedia.org/wiki/Base64) image. 
 
 **Basic example -**
 
@@ -18,7 +18,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <Process
+      <ProcessImage
         image='http://365.unsplash.com/assets/paul-jarvis-9530891001e7f4ccfcef9f3d7a2afecd.jpg'
         colors={{
           mix: {
