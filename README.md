@@ -101,11 +101,11 @@ class App extends React.Component {
 
 ## Documentation
 
-See the detailed documentation [here]().
+See the detailed documentation [here](./Docs).
 
 ## Contributing
 
-[Contributing guide]()
+[Contributing guide](https://github.com/nitin42/react-imgpro/blob/master/Docs/CONTRIBUTING.MD)
 
 ## License
 
