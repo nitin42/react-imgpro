@@ -1,6 +1,6 @@
 {
   "name": "react-imgpro",
-  "version": "0.0.1-beta6",
+  "version": "0.0.1-beta7",
   "description": "Image processing component for React",
   "main": "index.js",
   "files": [
