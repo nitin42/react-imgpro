@@ -29,4 +29,4 @@
     * [colors](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#colors)
     * [storage](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#storage)
     * [disableWebWorker](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#disablewebworker)
-* [Contributing]()
+* [Contributing](./CONTRIBUTING.md)
