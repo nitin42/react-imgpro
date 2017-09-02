@@ -1,4 +1,4 @@
-# 📷 react-imgpro
+# react-imgpro
 ![status](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)
 ![status](https://img.shields.io/badge/size-13KB-brightgreen.svg)
 ![status](https://img.shields.io/badge/status-stable-brightgreen.svg)
