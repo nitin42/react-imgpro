@@ -86,7 +86,7 @@ normalize the channels in an image (contrast stretching). For example the images
 
 **Example** -
 
-```
+```jsx
 <ProcessImage image={image} normalize={true} />
 ```
 
@@ -132,7 +132,7 @@ creates a reddish brown tone in an image.
 
 **Example** - 
 
-```
+```jsx
 <ProcessImage image={image} sepia={true} />
 ```
 
@@ -148,7 +148,7 @@ mix pixels of two colors
 
 **Example** - 
 
-```
+```jsx
 <ProcessImage image={image} dither565={true} />
 ```
 
@@ -164,7 +164,7 @@ scale an image by a factor
 
 **Example** - 
 
-```
+```jsx
 <ProcessImage image={image} scale={4} />
 ```
 
@@ -379,3 +379,33 @@ colors = {
 * `red` - Modify red component by a given amount.
 * `green` - Modify green component by a given amount.
 * `blue` - Modify blue component by a given amount.
+
+#### storage
+
+localStorage for storing the edited image.
+
+**Type** - `boolean`
+
+**Default** - `true`
+
+**Example** - 
+
+```jsx
+<ProcessImage image={image} storage={false} />
+```
+
+#### disableWebWorker
+
+disable the web worker and process the image in the main thread (not recommended).
+
+**Type** - `boolean`
+
+**Default** - `false`
+
+**Example** - 
+
+```jsx
+<ProcessImage image={image} disableWebWorker={true} />
+```
+
+
