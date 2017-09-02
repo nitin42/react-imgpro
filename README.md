@@ -1,5 +1,10 @@
 # 📷 react-imgpro
-[WIP] Come back when its done
+![status](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)
+![status](https://img.shields.io/badge/size-13KB-brightgreen.svg)
+![status](https://img.shields.io/badge/status-stable-brightgreen.svg)
+![yarn](https://img.shields.io/badge/yarn-0.21.3-blue.svg)
+![license](https://img.shields.io/packagist/l/doctrine/orm.svg)
+
 > Image Processing Component for React
 
 <p align="center">
@@ -40,9 +45,19 @@ class App extends React.Component {
 
 ## Why ?
 
-I was working on a project last month which involved a lot of image processing and I'd to use [OpenGL](https://www.opengl.org/). But before using OpenGL directly, I'd to learn different concepts in gl and then try to implement them in React with third party libs. The difficult part was not learning but it was the verbosity, boilerplate code and redundancy introduced by the libs in the codebase. It was getting difficult to organise all the things 😞
+<p align="center">
+  <img src="https://i.gyazo.com/16f09cba02f9dfeb272cc574f9fbbcff.png">
+</p>
+
+I was working on a project last month which involved a lot of image processing and I'd to rely on third party libraries. But before using them directly, I'd to learn different concepts in gl (shaders) and then try to implement them in React. The difficult part was not learning but it was the verbosity, boilerplate code and redundancy introduced by the libraries in the codebase. It was getting difficult to organise all the things 😞
 
 So I wanted a layer of abstraction which would make it easy to manipulate the colors of the image, applying filters and gl shaders efficiently with ease. And React's component based model was perfect for hiding all the implementation details in a component 😄 
+
+## Demo
+
+<p align="center">
+  <img src="http://g.recordit.co/XmhTiP84TD.gif">
+</p>
 
 ## Install
 
@@ -51,6 +66,7 @@ npm install react-imgpro
 ```
 
 This also depends on `react` so make sure you've installed it.
+
 
 ## Usage
 
