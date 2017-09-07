@@ -105,7 +105,12 @@ See the detailed documentation [here](./Docs).
 
 ## Contributing
 
-[Contributing guide](https://github.com/nitin42/react-imgpro/blob/master/Docs/CONTRIBUTING.MD)
+[Contributing guide](https://github.com/nitin42/react-imgpro/blob/master/Docs/CONTRIBUTING.MD).
+
+
+## Extra resources
+
+If you want to use blenders, plugins and perform event based calculations, try [CamanJS](http://camanjs.com/).
 
 ## License
 
