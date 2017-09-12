@@ -33,6 +33,10 @@ class ProcessImage extends Component {
   };
 
   componentWillMount = () => {
+    // server side rendering check
+    if (typeof window === undefined) {
+      global.window = {};
+    }
     // check support for Storage and get a reference to it
     this.checkStorageSupport();
 
@@ -56,11 +60,6 @@ class ProcessImage extends Component {
   };
 
   componentWillUnmount = () => {
-    // server side rendering check
-    if (typeof window === undefined) {
-      global.window = {};
-    }
-
     // Terminate worker (though worker is closed after the image processing is done)
     this.worker !== null ? this.worker.terminate() : null;
 
