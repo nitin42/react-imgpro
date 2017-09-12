@@ -408,4 +408,7 @@ disable the web worker and process the image in the main thread (not recommended
 <ProcessImage image={image} disableWebWorker={true} />
 ```
 
+If you disable the web worker, you will need to add [this](https://github.com/nitin42/react-imgpro/blob/master/src/jimp.min.js) file in your `index.html` in order to access `Jimp` instance. 
+
+
 
