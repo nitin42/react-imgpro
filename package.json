@@ -1,6 +1,6 @@
 {
   "name": "react-imgpro",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Image processing component for React",
   "main": "index.js",
   "files": [
@@ -47,9 +47,9 @@
     "worker-loader": "^0.8.1"
   },
   "scripts": {
-    "start": "NODE_ENV=production ./node_modules/.bin/webpack-dev-server --content-base ./public --config ./webpack.config.dev.js",
+    "start": "NODE_ENV=production ./node_modules/.bin/webpack-dev-server --content-base ./public --config ./webpack/webpack.config.dev.js",
     "prebuild": "rm -rf ./build",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.config.js --progress",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack/webpack.config.js --progress",
     "test": "jest",
     "test:watch": "jest --watch"
   }
