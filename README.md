@@ -1,6 +1,6 @@
 # react-imgpro
 ![status](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)
-![status](https://img.shields.io/badge/size-13KB-brightgreen.svg)
+![status](https://img.shields.io/badge/size-14.1KB-brightgreen.svg)
 ![status](https://img.shields.io/badge/status-stable-brightgreen.svg)
 ![yarn](https://img.shields.io/badge/yarn-0.21.3-blue.svg)
 ![license](https://img.shields.io/packagist/l/doctrine/orm.svg)
