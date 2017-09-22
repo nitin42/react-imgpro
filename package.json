@@ -25,9 +25,11 @@
   "license": "MIT",
   "dependencies": {
     "browser-image-size": "^1.1.0",
-    "react": "^15.6.1",
     "react-progressive-image": "^0.1.2",
     "webworkify-webpack": "^2.0.5"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -41,6 +43,7 @@
     "jimp": "^0.2.28",
     "prop-types": "^15.5.10",
     "react-dom": "^15.6.1",
+    "react": "^15.6.1",
     "react-test-renderer": "^15.6.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1",
