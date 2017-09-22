@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProgressiveImage from 'react-progressive-image';
 import size from 'browser-image-size';
 import work from 'webworkify-webpack';
+import root from 'window-or-global';
 import { filterPropsToListen, getImageProps } from '../utils/propsFactory';
 import getSize from '../utils/getDimensions';
 import { noJimpInstance, webWorkerInfo } from '../utils/errorMsg';
@@ -33,10 +34,6 @@ class ProcessImage extends Component {
   };
 
   componentWillMount = () => {
-    // server side rendering check
-    if (typeof window === undefined) {
-      global.window = {};
-    }
     // check support for Storage and get a reference to it
     this.checkStorageSupport();
 
@@ -51,7 +48,7 @@ class ProcessImage extends Component {
     }
   };
 
-  componentDidMount = () => {
+  componentDidMount = () => {    
     // Get original size of the image
     this.getOriginalImageSize(this.props);
 
@@ -71,7 +68,7 @@ class ProcessImage extends Component {
   checkStorageSupport = () => {
     if (typeof Storage !== 'undefined' && this.props.storage) {
       // Get a reference to localStorage
-      return (this.myStorage = window.localStorage);
+      return (this.myStorage = root.localStorage);
     } else if (!this.props.storage && typeof Storage !== 'undefined') {
       // Clear the cache before updating the storage prop
       this.clearStorage();
@@ -99,7 +96,7 @@ class ProcessImage extends Component {
   };
 
   // Clear the cache
-  clearStorage = () => window.localStorage.removeItem('placeholder');
+  clearStorage = () => root.localStorage.removeItem('placeholder');
 
   /**
    * Get the orginal size of the image
