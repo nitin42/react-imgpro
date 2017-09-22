@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDimension should fallback to default 1`] = `300`;
+
+exports[`getDimension should return the image height when attribute passed is 'height'  1`] = `300`;
+
+exports[`getDimension should return the image width when attribute passed is 'width'  1`] = `400`;
