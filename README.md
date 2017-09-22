@@ -40,7 +40,7 @@ class App extends React.Component {
 ```
 
 <p align="center">
-<img src="./introduction.jpg" height="400" width="800">
+<img src="./images/introduction.jpg" height="400" width="800">
 </p>
 
 ## Why ?
