@@ -1,4 +1,3 @@
-import React from 'react';
 import renderer from 'react-test-renderer';
 import Jimp from 'jimp';
 import processImage from '../src/utils/options';
