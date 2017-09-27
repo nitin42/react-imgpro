@@ -68,6 +68,13 @@ npm install react-imgpro
 This also depends on `react` so make sure you've installed it.
 
 
+Alternatively you can include it from a CDN:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-imgpro@1/build/main.js"></script>
+```
+
 ## Usage
 
 ```jsx
