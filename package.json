@@ -43,6 +43,8 @@
     "jest": "^21.0.2",
     "jimp": "^0.2.28",
     "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-test-renderer": "^15.6.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1",
