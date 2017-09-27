@@ -67,8 +67,9 @@ npm install react-imgpro
 
 This also depends on `react` so make sure you've installed it.
 
+OR
 
-Alternatively you can include it from a CDN:
+The UMD build is also available on [jsDelivr](https://www.jsdelivr.com).
 
 ```
 <script src="https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js"></script>
