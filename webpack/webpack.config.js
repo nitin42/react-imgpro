@@ -12,7 +12,8 @@ const externals = () => ({
   "browser-image-size": "browser-image-size",
   "react": "react",
   "prop-types": "prop-types",
-  "react-progressive-image": "react-progressive-image"
+  "react-progressive-image": "react-progressive-image",
+  "window-or-global": "window-or-global"
 })
 
 const jsLoader = () => ({
