@@ -1,7 +1,3 @@
-/**
- * Returns an object of image filter props
- * @param { object } props Component props
- */
 const filterPropsToListen = props => {
   const {
     resize,
@@ -52,10 +48,6 @@ const filterPropsToListen = props => {
   };
 };
 
-/**
- * Returns the rest of the props of the image component like className, alt
- * @param { object } props Component props
- */
 const getImageProps = props => {
   const {
     image,

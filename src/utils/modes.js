@@ -1,4 +1,3 @@
-// Resize modes
 const RESIZE_MODES = {
   neighbor: 'RESIZE_NEAREST_NEIGHBOR',
   bilinear: 'RESIZE_BILINEAR',
@@ -7,7 +6,6 @@ const RESIZE_MODES = {
   bezier: 'RESIZE_BEZIER',
 };
 
-// Align modes (contain and cover)
 const ALIGN_MODES = {
   horizontal_left: 'HORIZONTAL_ALIGN_LEFT',
   horizontal_center: 'HORIZONTAL_ALIGN_CENTER',
