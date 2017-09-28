@@ -1,6 +1,6 @@
 # react-imgpro
 [![Build Status](https://travis-ci.org/nitin42/react-imgpro.svg?branch=master)](https://travis-ci.org/nitin42/react-imgpro)
-![status](https://img.shields.io/badge/version-1.3.4-brightgreen.svg)
+![status](https://img.shields.io/badge/version-1.3.5-brightgreen.svg)
 ![status](https://img.shields.io/badge/size-13.1KB-brightgreen.svg)
 ![status](https://img.shields.io/badge/status-stable-brightgreen.svg)
 ![yarn](https://img.shields.io/badge/yarn-0.21.3-blue.svg)
