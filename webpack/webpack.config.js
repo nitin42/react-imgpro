@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const output = () => ({
   filename: '[name].js',
@@ -33,16 +34,7 @@ const plugins = () => (
       'process.env.NODE_ENV': 'production'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: false,
-      },
-      output: {
-        comments: false,
-        ascii_only: true,
-      }
-    })
+    new UglifyJSPlugin()
   ]
 );
 
@@ -51,6 +43,7 @@ module.exports = {
   output: output(),
   target: 'web',
   externals: externals(),
+  devtool: 'inline-source-map',
   module: {
     rules: [jsLoader()]
   },
