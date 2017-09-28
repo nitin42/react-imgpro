@@ -7,6 +7,8 @@ I'm excited to have you helping out. Thank you so much for your time 😄
 #### Understanding the codebase
 `react-imgpro` uses [Jimp](https://github.com/oliver-moran/jimp) for processing the images but will later extends it support for third party OpenGL libs. So before you start working on a PR, take a look at Jimp docs and it's features.
 
+> [This](https://github.com/nitin42/react-imgpro/tree/with-comments) branch includes comments for every function and module. This may help you in understanding the codebase more easily.
+
 #### Setting up the environment
 
 Considering you've forked and cloned the repo on your system, switch to the directory and install the dependencies.
