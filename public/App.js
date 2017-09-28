@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import ProcessImage from '../build/main.js';
 
-const src = 'https://lh3.ggpht.com/rd52IsX4tX3ManFjv1bTM0eA21CblZ3_1tKul300NHNNqYDoXr-x3qwuiYbF_Ae450RX=h900';
+const src = 'http://365.unsplash.com/assets/paul-jarvis-9530891001e7f4ccfcef9f3d7a2afecd.jpg';
 
 class App extends Component {
   state = {
@@ -16,17 +16,14 @@ class App extends Component {
       <div>
         <ProcessImage
           image={src}
-          disableWebWorker={true}
-          resize={{ height: 500, width: 500 }}
+          resize={{ width: 400, height: 400 }}
+          sepia={true}
           colors={{
             mix: {
-              color: 'purple',
-              amount: 10
-            },
-            saturate: 10,
-            lighten: 20
+              color: 'mistyrose',
+              amount: 20
+            }
           }}
-          processedImage={(src, err) => this.setState({ src, err })}
         />
       </div>
     );
