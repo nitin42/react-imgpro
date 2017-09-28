@@ -1,5 +1,6 @@
 const path = require('path');
-const webpack = require('webpack')
+const webpack = require('webpack');
+
 module.exports = {
   entry: path.resolve(__dirname, '../public/App.js'),
   output: {
@@ -15,17 +16,5 @@ module.exports = {
         use: 'babel-loader'
       }
     ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: false,
-      },
-      output: {
-        comments: false,
-        ascii_only: true,
-      }
-    }) 
-  ]
+  }
 }
