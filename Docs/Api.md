@@ -2,7 +2,7 @@
 
 ## Component
 
-`ProcessImage`
+**ProcessImage**
 
 It takes an image, applies desired filters, resizes the image (if) and returns a base64 image.
 
@@ -23,7 +23,7 @@ By default, the image is processed in a web worker instead of main thread for be
 ## Props
 
 
-#### resize
+### resize
 
 It takes image width, height and a resize mode.
 
@@ -46,7 +46,7 @@ You can pass these values to `mode`
 <ProcessImage image={image} resize={{ width: 500, height: 500, mode: 'bicubic' }} />
 ```
 
-#### quality
+### quality
 
 It takes a number between `1` - `100` for the image quality.
 
@@ -60,7 +60,7 @@ It takes a number between `1` - `100` for the image quality.
 <ProcessImage image={image} quality={95} />
 ```
 
-#### greyscale
+### greyscale
 
 Remove colors from the image
 
@@ -76,7 +76,7 @@ Remove colors from the image
 
 <img src="https://i.gyazo.com/9ba1232088e58a07bc286cac5ac72ebc.png">
 
-#### normalize
+### normalize
 
 normalize the channels in an image (contrast stretching). For example the images with poor contrast due to glare.
 
@@ -92,7 +92,7 @@ normalize the channels in an image (contrast stretching). For example the images
 
 <img src="https://i.gyazo.com/0497dd3d6f9729fbc595ce032bf61e22.png">
 
-#### invert
+### invert
 
 invert the image colors
 
@@ -108,7 +108,7 @@ invert the image colors
 
 <img src="https://i.gyazo.com/310bef2955e9be729e0d92e411aa44bd.png">
 
-#### opaque
+### opaque
 
 This sets the alpha channel to **opaque** for every pixel.
 
@@ -122,7 +122,7 @@ This sets the alpha channel to **opaque** for every pixel.
 <ProcessImage image={image} opaque={true} />
 ```
 
-#### sepia
+### sepia
 
 creates a reddish brown tone in an image.
 
@@ -138,7 +138,7 @@ creates a reddish brown tone in an image.
 
 <img src="https://gyazo.com/3eb78b8069bbc1223475eec693795da2.png">
 
-#### dither565 (similar to ninepatches class in Android)
+### dither565 (similar to ninepatches class in Android)
 
 mix pixels of two colors
 
@@ -154,7 +154,7 @@ mix pixels of two colors
 
 <img src="https://gyazo.com/9219fef633e9ef4f67851ef6405f494b.png">
 
-#### scale
+### scale
 
 scale an image by a factor
 
@@ -168,7 +168,7 @@ scale an image by a factor
 <ProcessImage image={image} scale={4} />
 ```
 
-#### scaleToFitImage
+### scaleToFitImage
 
 scale an image to the largest size that fits inside the given width and height
 
@@ -182,7 +182,7 @@ scale an image to the largest size that fits inside the given width and height
 <ProcessImage image={image} scaleToFit={{ width: 500, height: 500 }} />
 ```
 
-#### flip
+### flip
 
 flip the direction of an image
 
@@ -196,7 +196,7 @@ flip the direction of an image
 <ProcessImage image={image} flip={{ horizontal: true }}
 ```
 
-#### rotate
+### rotate
 
 rotate the image
 
@@ -212,7 +212,7 @@ rotate the image
 
 > Optionally, a resize mode can be passed. If `false` is passed as the second parameter, the image width and height will not be resized.
 
-#### brightness
+### brightness
 
 change the brightness level of an image. It takes value from `-1` to `1`.
 
@@ -224,7 +224,7 @@ change the brightness level of an image. It takes value from `-1` to `1`.
 <ProcessImage image={image} brightness={0.5} />
 ```
 
-#### contrast
+### contrast
 
 change the contrast level of an image. It also takes value from `-1` to `1`.
 
@@ -236,7 +236,7 @@ change the contrast level of an image. It also takes value from `-1` to `1`.
 <ProcessImage image={image} contrast={0.3} />
 ```
 
-#### fade
+### fade
 
 fades an image by factor `0 - 1`.
 
@@ -260,7 +260,7 @@ multiply the alpha channel by each pixel by the factor f, 0 - 1. Alternative to 
 <ProcessImage image={image} opacity={0.8} />
 ```
 
-#### blur
+### blur
 
 fast blur the image by r pixels. It takes a value from `1` - `100`.
 
@@ -272,7 +272,7 @@ fast blur the image by r pixels. It takes a value from `1` - `100`.
 <ProcessImage image={image} blur={20} />
 ```
 
-#### posterize
+### posterize
 
 apply a posterization effect with n level. It takes a value from `1` - `100`.
 
@@ -286,7 +286,7 @@ apply a posterization effect with n level. It takes a value from `1` - `100`.
 
 <img src="https://gyazo.com/be0a62cbcc7dfa9c329c59aa5ecb1d29.png">
 
-#### cover
+### cover
 
 scale the image to the given width and height, some parts of the image may be clipped
 
@@ -309,7 +309,7 @@ scale the image to the given width and height, some parts of the image may be cl
 <ProcessImage image={image} cover={{ width: 400, height: 400, mode: 'horizontal_center' }} />
 ```
 
-#### contain
+### contain
 
 scale the image to the given width and height, some parts of the image may be letter boxed
 
@@ -332,7 +332,7 @@ scale the image to the given width and height, some parts of the image may be le
 <ProcessImage image={image} contain={{ width: 400, height: 400, mode: 'horizontal_center' }} />
 ```
 
-#### colors
+### colors
 
 color manipulation
 
@@ -380,7 +380,7 @@ colors = {
 * `green` - Modify green component by a given amount.
 * `blue` - Modify blue component by a given amount.
 
-#### storage
+### storage
 
 localStorage for storing the edited image.
 
@@ -394,7 +394,7 @@ localStorage for storing the edited image.
 <ProcessImage image={image} storage={false} />
 ```
 
-#### disableWebWorker
+### disableWebWorker
 
 disable the web worker and process the image in the main thread (not recommended).
 
