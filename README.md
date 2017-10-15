@@ -111,6 +111,10 @@ class App extends React.Component {
 
 See the detailed documentation [here](./Docs).
 
+## SSR support ?
+
+Yes, `react-imgpro` supports SSR.
+
 ## Contributing
 
 [Contributing guide](https://github.com/nitin42/react-imgpro/blob/master/Docs/CONTRIBUTING.MD).
