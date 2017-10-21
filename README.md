@@ -15,7 +15,7 @@
 
 `react-imgpro` is a image processing component for React. This component process an image with filters supplied as props and returns a [base64](https://en.wikipedia.org/wiki/Base64) image. 
 
-**Basic example -**
+**Example**
 
 ```jsx
 class App extends React.Component {
@@ -43,7 +43,7 @@ class App extends React.Component {
 <img src="./images/introduction.jpg" height="400" width="800">
 </p>
 
-## Why ?
+## Motivation
 
 <p align="center">
   <img src="https://i.gyazo.com/16f09cba02f9dfeb272cc574f9fbbcff.png">
@@ -69,7 +69,7 @@ This also depends on `react` so make sure you've installed it.
 
 OR
 
-The UMD build is also available on [jsDelivr](https://www.jsdelivr.com).
+The UMD build is also available via [jsDelivr](https://www.jsdelivr.com).
 
 ```
 <script src="https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js"></script>
@@ -118,7 +118,6 @@ Yes, `react-imgpro` supports SSR.
 ## Contributing
 
 [Contributing guide](https://github.com/nitin42/react-imgpro/blob/master/Docs/CONTRIBUTING.MD).
-
 
 ## Extra resources
 
