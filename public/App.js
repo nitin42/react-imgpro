@@ -7,8 +7,10 @@ const src = 'https://lh3.ggpht.com/rd52IsX4tX3ManFjv1bTM0eA21CblZ3_1tKul300NHNNq
 
 class App extends Component {
   state = {
-    src: '',
-    err: ''
+    src: "",
+    err: "",
+    sepia: true,
+    mixAmount: 10
   };
 
   render() {
@@ -17,17 +19,35 @@ class App extends Component {
         <ProcessImage
           image={src}
           disableWebWorker={true}
-          resize={{ height: 500, width: 500 }}
+          disableRerender={true}
+          resize={{ width: 400, height: 400 }}
+          sepia={this.state.sepia}
           colors={{
             mix: {
-              color: 'purple',
-              amount: 10
-            },
-            saturate: 10,
-            lighten: 20
+              color: "mistyrose",
+              amount: this.state.mixAmount
+            }
           }}
-          processedImage={(src, err) => this.setState({ src, err })}
         />
+        <button
+          onClick={() => {
+            this.setState({
+              sepia: !this.state.sepia
+            });
+          }}
+        >
+          test1
+        </button>
+
+        <button
+          onClick={() => {
+            this.setState({
+              mixAmount: (this.state.mixAmount) + 10 
+            });
+          }}
+        >
+          test2
+        </button>
       </div>
     );
   }
