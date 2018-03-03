@@ -76,6 +76,7 @@ const getImageProps = props => {
     processedImage,
     storage,
     disableWebWorker,
+    disableRerender,
     ...rest
   } = props;
 

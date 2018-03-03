@@ -83,7 +83,8 @@ const MainPropTypes = {
   resize: resizePropType,
   sepia: PropTypes.bool,
   scale: PropTypes.number,
-  scaleToFit: scaleToFitPropType
+  scaleToFit: scaleToFitPropType,
+  disableRerender:PropTypes.bool,
 };
 
 export default MainPropTypes;

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import ProgressiveImage from 'react-progressive-image';
-import size from 'browser-image-size';
-import work from 'webworkify-webpack';
-import root from 'window-or-global';
-import { filterPropsToListen, getImageProps } from '../utils/propsFactory';
-import getSize from '../utils/getDimensions';
-import { noJimpInstance, webWorkerInfo } from '../utils/errorMsg';
-import { setItem, getItem, removeItem } from '../utils/storage';
-import ROOT from '../utils/build';
-import MainPropTypes from '../validators/props';
+import React, { Component } from "react";
+import ProgressiveImage from "react-progressive-image";
+import size from "browser-image-size";
+import work from "webworkify-webpack";
+import root from "window-or-global";
+import { filterPropsToListen, getImageProps } from "../utils/propsFactory";
+import getSize from "../utils/getDimensions";
+import { noJimpInstance, webWorkerInfo } from "../utils/errorMsg";
+import { setItem, getItem, removeItem } from "../utils/storage";
+import ROOT from "../utils/build";
+import MainPropTypes from "../validators/props";
 
-const processImage = require('../utils/options');
+const processImage = require("../utils/options");
 
 class ProcessImage extends Component {
   static propTypes = MainPropTypes;
@@ -27,8 +27,8 @@ class ProcessImage extends Component {
   };
 
   state = {
-    src: '',
-    err: '',
+    src: "",
+    err: "",
     height: null,
     width: null
   };
@@ -36,8 +36,8 @@ class ProcessImage extends Component {
   componentWillMount = () => {
     this.checkStorageSupport();
 
-    if (typeof Worker !== 'undefined' && !this.props.disableWebWorker) {
-      this.worker = work(require.resolve('../worker.js'));
+    if (typeof Worker !== "undefined" && !this.props.disableWebWorker) {
+      this.worker = work(require.resolve("../worker.js"));
       // this.worker = new NewWorker();
 
       this.sendPropsToWorker(this.props, this.worker);
@@ -54,16 +54,26 @@ class ProcessImage extends Component {
     );
   };
 
+  componentDidUpdate = () => {
+    if (this.props.image && !this.props.disableRerender) {
+      if (typeof Worker !== "undefined" && !this.props.disableWebWorker) {
+        this.sendPropsToWorker(this.props, this.worker);
+      } else {
+        this.processInMainThread(this.props);
+      }
+    }
+  };
+
   componentWillUnmount = () => {
     this.worker !== null ? this.worker.terminate() : null;
 
-    removeItem('placeholder', this.myStorage);
+    removeItem("placeholder", this.myStorage);
   };
 
   checkStorageSupport = () => {
-    if (typeof Storage !== 'undefined' && this.props.storage) {
+    if (typeof Storage !== "undefined" && this.props.storage) {
       return (this.myStorage = root.localStorage);
-    } else if (!this.props.storage && typeof Storage !== 'undefined') {
+    } else if (!this.props.storage && typeof Storage !== "undefined") {
       this.clearStorage();
       return (this.myStorage = null);
     }
@@ -75,7 +85,7 @@ class ProcessImage extends Component {
     props.processedImage !== undefined ? props.processedImage(src, err) : null;
 
   processInMainThreadOrInWebWorker = (worker, props, storageReference) => {
-    if (typeof Worker !== 'undefined' && !props.disableWebWorker) {
+    if (typeof Worker !== "undefined" && !props.disableWebWorker) {
       return this.processInWebWorker(worker, props, storageReference);
     } else {
       if (ROOT !== undefined && props.disableWebWorker) {
@@ -87,7 +97,7 @@ class ProcessImage extends Component {
     }
   };
 
-  clearStorage = () => root.localStorage.removeItem('placeholder');
+  clearStorage = () => root.localStorage.removeItem("placeholder");
 
   getOriginalImageSize = props => {
     size(props.image).then(size =>
@@ -99,8 +109,8 @@ class ProcessImage extends Component {
     const { height, width } = this.state;
 
     return {
-      height: getSize(props, height, 'height'),
-      width: getSize(props, width, 'width')
+      height: getSize(props, height, "height"),
+      width: getSize(props, width, "width")
     };
   };
 
@@ -109,8 +119,10 @@ class ProcessImage extends Component {
   processInMainThread = props => {
     ROOT.read(props.image).then(image => {
       processImage(image, props, ROOT).getBase64(ROOT.AUTO, (err, src) => {
-        this.setState({ src, err });
-        this.passPropsToParent(props, src, err);
+        if(this.state.src!==src || this.state.err!==err){
+          this.setState({ src, err });
+          this.passPropsToParent(props, src, err);
+        }
       });
     });
   };
@@ -118,9 +130,12 @@ class ProcessImage extends Component {
   processInWebWorker = (worker, props, storageReference) => {
     if (worker !== null) {
       worker.onmessage = e => {
-        this.setState({ src: e.data.src, err: e.data.err });
-        setItem('placeholder', e.data.src, storageReference);
-        this.passPropsToParent(props, e.data.src, e.data.err);
+        // avoid loop
+        if (e.data.src !== this.state.src || e.data.err !== this.state.err) {
+          this.setState({ src: e.data.src, err: e.data.err });
+          setItem("placeholder", e.data.src, storageReference);
+          this.passPropsToParent(props, e.data.src, e.data.err);
+        }
       };
     }
   };
@@ -141,9 +156,9 @@ class ProcessImage extends Component {
   );
 
   placeholderImage = image =>
-    getItem('placeholder', this.myStorage) === null
+    getItem("placeholder", this.myStorage) === null
       ? image
-      : getItem('placeholder', this.myStorage);
+      : getItem("placeholder", this.myStorage);
 
   showImage = (img, props, restProps) => (
     <ProgressiveImage
