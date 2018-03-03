@@ -413,5 +413,26 @@ If you disable the web worker, you will need to add [this](https://github.com/ni
 ### disableRerender
 disable the process image in re-render  by options changed (recommended use with worker)
 
+**Type** - `boolean`
+
+**Default** - `false`
+
+**Example** - 
+
+```jsx
+<ProcessImage image={image} disableRerender={true} />
+```
+
+### customCdn
+support you can add custom cdn for jimp
+
+
+**Type** - `string`
+
+**Example** -
+
+```jsx
+<ProcessImage image={image} customCdn={"https://...."} />
+```
 
 
