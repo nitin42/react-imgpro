@@ -23,14 +23,14 @@ class ProcessImage extends Component {
     opaque: false,
     sepia: false,
     dither565: false,
-    disableWebWorker: false,
+    disableWebWorker: false
   };
 
   state = {
     src: '',
     err: '',
     height: null,
-    width: null,
+    width: null
   };
 
   componentWillMount = () => {
@@ -44,10 +44,14 @@ class ProcessImage extends Component {
     }
   };
 
-  componentDidMount = () => {    
+  componentDidMount = () => {
     this.getOriginalImageSize(this.props);
 
-    this.processInMainThreadOrInWebWorker(this.worker, this.props, this.myStorage);
+    this.processInMainThreadOrInWebWorker(
+      this.worker,
+      this.props,
+      this.myStorage
+    );
   };
 
   componentWillUnmount = () => {
@@ -67,7 +71,8 @@ class ProcessImage extends Component {
     return (this.myStorage = null);
   };
 
-  passPropsToParent = (props, src, err) => (props.processedImage !== undefined ? props.processedImage(src, err) : null);
+  passPropsToParent = (props, src, err) =>
+    props.processedImage !== undefined ? props.processedImage(src, err) : null;
 
   processInMainThreadOrInWebWorker = (worker, props, storageReference) => {
     if (typeof Worker !== 'undefined' && !props.disableWebWorker) {
@@ -85,7 +90,9 @@ class ProcessImage extends Component {
   clearStorage = () => root.localStorage.removeItem('placeholder');
 
   getOriginalImageSize = props => {
-    size(props.image).then(size => this.setState({ height: size.height, width: size.width }));
+    size(props.image).then(size =>
+      this.setState({ height: size.height, width: size.width })
+    );
   };
 
   getDefaultImageSize = props => {
@@ -93,7 +100,7 @@ class ProcessImage extends Component {
 
     return {
       height: getSize(props, height, 'height'),
-      width: getSize(props, width, 'width'),
+      width: getSize(props, width, 'width')
     };
   };
 
@@ -120,20 +127,32 @@ class ProcessImage extends Component {
 
   sendPropsToWorker = (props, worker) => {
     if (worker !== null) {
-      worker.postMessage({ props: filterPropsToListen(props), image: props.image });
+      worker.postMessage({
+        props: filterPropsToListen(props),
+        image: props.image
+      });
     }
   };
 
   worker = null;
 
-  processedImage = (image, restProps, style) => <img src={image} {...restProps} style={style} />;
+  processedImage = (image, restProps, style) => (
+    <img src={image} {...restProps} style={style} />
+  );
 
   placeholderImage = image =>
-    getItem('placeholder', this.myStorage) === null ? image : getItem('placeholder', this.myStorage);
+    getItem('placeholder', this.myStorage) === null
+      ? image
+      : getItem('placeholder', this.myStorage);
 
   showImage = (img, props, restProps) => (
-    <ProgressiveImage src={img} placeholder={this.placeholderImage(props.image)}>
-      {image => this.processedImage(image, restProps, this.getDefaultImageSize(props))}
+    <ProgressiveImage
+      src={img}
+      placeholder={this.placeholderImage(props.image)}
+    >
+      {image =>
+        this.processedImage(image, restProps, this.getDefaultImageSize(props))
+      }
     </ProgressiveImage>
   );
 

@@ -21,7 +21,7 @@ function processImage(image, props, ROOT) {
     fade,
     opacity,
     blur,
-    posterize,
+    posterize
   } = props;
 
   function MODE(algorithm) {
@@ -38,7 +38,8 @@ function processImage(image, props, ROOT) {
 
   const AUTOMEASURE = ROOT.AUTO;
 
-  const setter = (value, fallbackTo) => (value !== undefined ? value : fallbackTo);
+  const setter = (value, fallbackTo) =>
+    value !== undefined ? value : fallbackTo;
 
   image.__proto__.pass = function(image) {
     return image;
@@ -50,7 +51,11 @@ function processImage(image, props, ROOT) {
 
   function scaleImageWithoutMode(prop, img, scaleMode) {
     return prop !== undefined && Object.keys(prop).length > 0
-      ? img[scaleMode](prop.width, prop.height, setMode(prop, ALIGN_MODES, ROOT.HORIZONTAL_ALIGN_CENTER))
+      ? img[scaleMode](
+          prop.width,
+          prop.height,
+          setMode(prop, ALIGN_MODES, ROOT.HORIZONTAL_ALIGN_CENTER)
+        )
       : image.pass(image);
   }
 
@@ -68,7 +73,7 @@ function processImage(image, props, ROOT) {
         if (setAmountWithColor.includes(option)) {
           const schemaOne = {
             apply: option,
-            params: [props.colors[option].color, props.colors[option].amount],
+            params: [props.colors[option].color, props.colors[option].amount]
           };
 
           setConfig.push(schemaOne);
@@ -76,7 +81,7 @@ function processImage(image, props, ROOT) {
 
         const schemaTwo = {
           apply: option,
-          params: [props.colors[option]],
+          params: [props.colors[option]]
         };
 
         setConfig.push(schemaTwo);
@@ -131,7 +136,10 @@ function processImage(image, props, ROOT) {
 
   image.__proto__.scaleToFitImage = function(image, scaleToFit) {
     return scaleToFit !== undefined
-      ? image.scaleToFit(setter(scaleToFit.width, AUTOMEASURE), setter(scaleToFit.height, AUTOMEASURE))
+      ? image.scaleToFit(
+          setter(scaleToFit.width, AUTOMEASURE),
+          setter(scaleToFit.height, AUTOMEASURE)
+        )
       : image.pass(image);
   };
 
@@ -143,7 +151,10 @@ function processImage(image, props, ROOT) {
 
   image.__proto__.rotateImage = function(image, rotate) {
     return rotate !== undefined
-      ? image.rotate(setter(rotate.degree, 0), setMode(rotate, RESIZE_MODES, false))
+      ? image.rotate(
+          setter(rotate.degree, 0),
+          setMode(rotate, RESIZE_MODES, false)
+        )
       : image.pass(image);
   };
 

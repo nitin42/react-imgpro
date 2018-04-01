@@ -3,7 +3,7 @@ const RESIZE_MODES = {
   bilinear: 'RESIZE_BILINEAR',
   bicubic: 'RESIZE_BICUBIC',
   hermite: 'RESIZE_HERMITE',
-  bezier: 'RESIZE_BEZIER',
+  bezier: 'RESIZE_BEZIER'
 };
 
 const ALIGN_MODES = {
@@ -12,10 +12,10 @@ const ALIGN_MODES = {
   horizontal_right: 'HORIZONTAL_ALIGN_RIGHT',
   vertical_top: 'VERTICAL_ALIGN_TOP',
   vertical_middle: 'VERTICAL_ALIGN_MIDDLE',
-  vertical_bottom: 'VERTICAL_ALIGN_BOTTOM',
+  vertical_bottom: 'VERTICAL_ALIGN_BOTTOM'
 };
 
 module.exports = {
   ALIGN_MODES,
-  RESIZE_MODES,
+  RESIZE_MODES
 };
