@@ -1,7 +1,5 @@
 # react-imgpro
 
-**Looking for maintainers! Let me know if you are interested. I am at [@NTulswani](https://www.twitter.com/NTulswani) on Twitter.**
-
 [![Build Status](https://travis-ci.org/nitin42/react-imgpro.svg?branch=master)](https://travis-ci.org/nitin42/react-imgpro)
 ![status](https://img.shields.io/badge/version-1.3.6-brightgreen.svg)
 ![status](https://img.shields.io/badge/size-13.1KB-brightgreen.svg)
