@@ -54,6 +54,16 @@ class ProcessImage extends Component {
     );
   };
 
+  componentDidUpdate = () => {
+    if (this.props.image && !this.props.disableRerender) {
+      if (typeof Worker !== 'undefined' && !this.props.disableWebWorker) {
+        this.sendPropsToWorker(this.props, this.worker);
+      } else {
+        this.processInMainThread(this.props);
+      }
+    }
+  };
+
   componentWillUnmount = () => {
     this.worker !== null ? this.worker.terminate() : null;
 
@@ -109,8 +119,10 @@ class ProcessImage extends Component {
   processInMainThread = props => {
     ROOT.read(props.image).then(image => {
       processImage(image, props, ROOT).getBase64(ROOT.AUTO, (err, src) => {
-        this.setState({ src, err });
-        this.passPropsToParent(props, src, err);
+        if (this.state.src !== src || this.state.err !== err) {
+          this.setState({ src, err });
+          this.passPropsToParent(props, src, err);
+        }
       });
     });
   };
@@ -118,9 +130,12 @@ class ProcessImage extends Component {
   processInWebWorker = (worker, props, storageReference) => {
     if (worker !== null) {
       worker.onmessage = e => {
-        this.setState({ src: e.data.src, err: e.data.err });
-        setItem('placeholder', e.data.src, storageReference);
-        this.passPropsToParent(props, e.data.src, e.data.err);
+        // avoid loop
+        if (e.data.src !== this.state.src || e.data.err !== this.state.err) {
+          this.setState({ src: e.data.src, err: e.data.err });
+          setItem('placeholder', e.data.src, storageReference);
+          this.passPropsToParent(props, e.data.src, e.data.err);
+        }
       };
     }
   };
