@@ -354,7 +354,7 @@ colors = {
   mix: {
     color: string,
     amount: number
-  }
+  },
   tint: number,
   xor: number,
   shade: number,
