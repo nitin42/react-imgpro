@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "browser-image-size": "^1.1.0",
+    "lint-staged": "^7.0.2",
     "react-progressive-image": "^0.1.2",
     "webworkify-webpack": "^2.0.5",
     "window-or-global": "^1.0.1"
@@ -38,8 +39,10 @@
     "babel-loader": "^7.1.2",
     "babel-preset-react-app": "^3.0.2",
     "babili-webpack-plugin": "^0.1.2",
+    "husky": "^0.14.3",
     "jest": "^21.2.0",
     "jimp": "^0.2.28",
+    "prettier": "^1.11.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -54,6 +57,14 @@
     "prebuild": "rm -rf ./build",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack/webpack.config.js --progress",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "format": "prettier --write --single-quote \"src/**/*.js\"",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote \"src/**/*.js\"",
+      "git add"
+    ]
   }
 }
