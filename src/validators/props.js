@@ -84,8 +84,8 @@ const MainPropTypes = {
   sepia: PropTypes.bool,
   scale: PropTypes.number,
   scaleToFit: scaleToFitPropType,
-  disableRerender:PropTypes.bool,
-  customCdn:PropTypes.string,
+  disableRerender: PropTypes.bool,
+  customCdn: PropTypes.string
 };
 
 export default MainPropTypes;
