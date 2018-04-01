@@ -3,44 +3,44 @@ import PropTypes from 'prop-types';
 const resizePropType = PropTypes.shape({
   width: PropTypes.number,
   height: PropTypes.number,
-  mode: PropTypes.string,
+  mode: PropTypes.string
 });
 
 const containPropType = PropTypes.shape({
   width: PropTypes.number,
   height: PropTypes.number,
-  mode: PropTypes.string,
+  mode: PropTypes.string
 });
 
 const coverPropType = PropTypes.shape({
   width: PropTypes.number,
   height: PropTypes.number,
-  mode: PropTypes.string,
+  mode: PropTypes.string
 });
 
 const scaleToFitPropType = PropTypes.shape({
   width: PropTypes.number,
-  height: PropTypes.number,
+  height: PropTypes.number
 });
 
 const flipPropType = PropTypes.shape({
   horizontal: PropTypes.bool,
-  vertical: PropTypes.bool,
+  vertical: PropTypes.bool
 });
 
 const rotatePropType = PropTypes.shape({
   degree: PropTypes.number,
-  mode: PropTypes.string,
+  mode: PropTypes.string
 });
 
 const mixPropType = PropTypes.shape({
   color: PropTypes.string,
-  amount: PropTypes.number,
+  amount: PropTypes.number
 });
 
 const xorPropType = PropTypes.shape({
   color: PropTypes.string,
-  amount: PropTypes.number,
+  amount: PropTypes.number
 });
 
 const colorsPropType = PropTypes.shape({
@@ -57,7 +57,7 @@ const colorsPropType = PropTypes.shape({
   xor: xorPropType,
   red: PropTypes.number,
   green: PropTypes.number,
-  blue: PropTypes.number,
+  blue: PropTypes.number
 });
 
 const MainPropTypes = {
@@ -83,7 +83,7 @@ const MainPropTypes = {
   resize: resizePropType,
   sepia: PropTypes.bool,
   scale: PropTypes.number,
-  scaleToFit: scaleToFitPropType,
+  scaleToFit: scaleToFitPropType
 };
 
 export default MainPropTypes;

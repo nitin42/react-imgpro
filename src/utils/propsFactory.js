@@ -20,7 +20,7 @@ const filterPropsToListen = props => {
     opacity,
     blur,
     posterize,
-    colors,
+    colors
   } = props;
 
   return {
@@ -44,7 +44,7 @@ const filterPropsToListen = props => {
     opacity,
     blur,
     posterize,
-    colors,
+    colors
   };
 };
 
