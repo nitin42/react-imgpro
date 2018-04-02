@@ -122,6 +122,9 @@ class ProcessImage extends Component {
         if (this.state.src !== src || this.state.err !== err) {
           this.setState({ src, err });
           this.passPropsToParent(props, src, err);
+          if (typeof props.onProcessFinish === 'function') {
+            onProcessFinish();
+          }
         }
       });
     });
@@ -135,6 +138,9 @@ class ProcessImage extends Component {
           this.setState({ src: e.data.src, err: e.data.err });
           setItem('placeholder', e.data.src, storageReference);
           this.passPropsToParent(props, e.data.src, e.data.err);
+          if (typeof props.onProcessFinish === 'function') {
+            onProcessFinish();
+          }
         }
       };
     }

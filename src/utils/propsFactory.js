@@ -78,6 +78,7 @@ const getImageProps = props => {
     disableWebWorker,
     disableRerender,
     customCdn,
+    onProcessFinish,
     ...rest
   } = props;
 

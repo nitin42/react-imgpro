@@ -85,7 +85,8 @@ const MainPropTypes = {
   scale: PropTypes.number,
   scaleToFit: scaleToFitPropType,
   disableRerender: PropTypes.bool,
-  customCdn: PropTypes.string
+  customCdn: PropTypes.string,
+  onProcessFinish: PropTypes.func
 };
 
 export default MainPropTypes;
