@@ -123,7 +123,7 @@ class ProcessImage extends Component {
           this.setState({ src, err });
           this.passPropsToParent(props, src, err);
           if (typeof props.onProcessFinish === 'function') {
-            onProcessFinish();
+            props.onProcessFinish();
           }
         }
       });
@@ -139,7 +139,7 @@ class ProcessImage extends Component {
           setItem('placeholder', e.data.src, storageReference);
           this.passPropsToParent(props, e.data.src, e.data.err);
           if (typeof props.onProcessFinish === 'function') {
-            onProcessFinish();
+            props.onProcessFinish();
           }
         }
       };
@@ -180,7 +180,6 @@ class ProcessImage extends Component {
   render() {
     const { src } = this.state;
     const restProps = getImageProps(this.props);
-
     return this.showImage(src, this.props, restProps);
   }
 }
