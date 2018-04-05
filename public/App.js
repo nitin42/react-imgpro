@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import ProcessImage from '../build/main.js';
+import ProcessImage from '../src';
 
-const src = 'https://lh3.ggpht.com/rd52IsX4tX3ManFjv1bTM0eA21CblZ3_1tKul300NHNNqYDoXr-x3qwuiYbF_Ae450RX=h900';
+const src = 'http://orscxqn8h.bkt.clouddn.com/18-3-3/943334.jpg';
 
 class App extends Component {
   state = {
-    src: "",
-    err: "",
+    src: '',
+    err: '',
     sepia: true,
-    mixAmount: 10
+    mixAmount: 10,
+    isProcessing: false
   };
 
   render() {
@@ -18,21 +19,27 @@ class App extends Component {
       <div>
         <ProcessImage
           image={src}
-          disableWebWorker={true}
-          disableRerender={true}
+          // disableWebWorker={true}
           resize={{ width: 400, height: 400 }}
           sepia={this.state.sepia}
+          onProcessFinish={() => {
+            this.setState({
+              isProcessing: false
+            });
+          }}
           colors={{
             mix: {
-              color: "mistyrose",
+              color: 'mistyrose',
               amount: this.state.mixAmount
             }
           }}
         />
         <button
+          disabled={this.state.isProcessing}
           onClick={() => {
             this.setState({
-              sepia: !this.state.sepia
+              sepia: !this.state.sepia,
+              isProcessing: true
             });
           }}
         >
@@ -40,9 +47,11 @@ class App extends Component {
         </button>
 
         <button
+          disabled={this.state.isProcessing}
           onClick={() => {
             this.setState({
-              mixAmount: (this.state.mixAmount) + 10 
+              mixAmount: this.state.mixAmount + 10,
+              isProcessing: true
             });
           }}
         >
@@ -57,6 +66,6 @@ render(<App />, document.getElementById('root'));
 
 /**
  * processImage prop (validation)
- * 
- * 
+ *
+ *
  */
