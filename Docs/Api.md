@@ -435,4 +435,23 @@ support you can add custom cdn for jimp
 <ProcessImage image={image} customCdn={"https://...."} />
 ```
 
+### onProcessFinish
+
+**Type** - `function`
+
+**Example** -
+
+a callback on process finished
+
+```jsx
+<ProcessImage
+  image={src}
+  onProcessFinish={() => {
+    this.setState({
+      isProcessing: false
+    });
+  }}
+/>
+```
+
 
