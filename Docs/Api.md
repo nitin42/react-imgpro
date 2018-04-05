@@ -410,5 +410,48 @@ disable the web worker and process the image in the main thread (not recommended
 
 If you disable the web worker, you will need to add [this](https://github.com/nitin42/react-imgpro/blob/master/src/jimp.min.js) file in your `index.html` in order to access `Jimp` instance. 
 
+### disableRerender
+disable the process image in re-render  by options changed (recommended use with worker)
+
+**Type** - `boolean`
+
+**Default** - `false`
+
+**Example** - 
+
+```jsx
+<ProcessImage image={image} disableRerender={true} />
+```
+
+### customCdn
+support you can add custom cdn for jimp
+
+
+**Type** - `string`
+
+**Example** -
+
+```jsx
+<ProcessImage image={image} customCdn={"https://...."} />
+```
+
+### onProcessFinish
+
+**Type** - `function`
+
+**Example** -
+
+a callback on process finished
+
+```jsx
+<ProcessImage
+  image={src}
+  onProcessFinish={() => {
+    this.setState({
+      isProcessing: false
+    });
+  }}
+/>
+```
 
 
