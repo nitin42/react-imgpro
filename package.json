@@ -41,7 +41,7 @@
     "babili-webpack-plugin": "^0.1.2",
     "husky": "^0.14.3",
     "jest": "^21.2.0",
-    "jimp": "^0.2.28",
+    "jimp": "^0.3.9-alpha.0",
     "prettier": "^1.11.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
