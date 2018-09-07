@@ -1,10 +1,10 @@
 # react-imgpro
 
 [![Build Status](https://travis-ci.org/nitin42/react-imgpro.svg?branch=master)](https://travis-ci.org/nitin42/react-imgpro)
-![status](https://img.shields.io/badge/version-1.3.6-brightgreen.svg)
+![status](https://img.shields.io/badge/version-1.3.9-brightgreen.svg)
 ![status](https://img.shields.io/badge/size-13.1KB-brightgreen.svg)
 ![status](https://img.shields.io/badge/status-stable-brightgreen.svg)
-![yarn](https://img.shields.io/badge/yarn-0.21.3-blue.svg)
+![yarn](https://img.shields.io/badge/yarn-1.9.4-blue.svg)
 
 > Image Processing Component for React
 
@@ -23,15 +23,16 @@ class App extends React.Component {
   state = { src: '', err: null }
   
   render() {
+    const params = {
+      mix: {
+        color: 'mistyrose',
+        amount: 10
+       }
+    }
     return (
       <ProcessImage
         image='http://365.unsplash.com/assets/paul-jarvis-9530891001e7f4ccfcef9f3d7a2afecd.jpg'
-        colors={{
-          mix: {
-            color: 'mistyrose',
-            amount: 10
-          }
-        }}
+        colors={params}
         resize={{ width: 500, height: 500, mode: 'bilinear' }}
         processedImage={(src, err) => this.setState({ src, err, })}
       />     
