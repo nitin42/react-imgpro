@@ -26,7 +26,7 @@
   "dependencies": {
     "browser-image-size": "^1.1.0",
     "lint-staged": "^7.0.2",
-    "react-progressive-image": "^0.1.2",
+    "react-progressive-image": "^0.3.0",
     "webworkify-webpack": "^2.0.5",
     "window-or-global": "^1.0.1"
   },
@@ -34,10 +34,15 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/runtime": "7.0.0-beta.46",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^21.0.2",
-    "babel-loader": "^7.1.2",
-    "babel-preset-react-app": "^3.0.2",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-macros": "2.2.1",
+    "babel-plugin-transform-dynamic-import": "2.0.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.13",
+    "babel-preset-react-app": "^4.0.0-next.a671462c",
     "babili-webpack-plugin": "^0.1.2",
     "husky": "^0.14.3",
     "jest": "^21.2.0",
@@ -48,9 +53,11 @@
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "worker-loader": "^0.8.1"
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
+    "worker-loader": "^0.8.1",
+    "workerize-loader": "^1.0.4"
   },
   "scripts": {
     "start": "NODE_ENV=production ./node_modules/.bin/webpack-dev-server --content-base ./public --config ./webpack/webpack.config.dev.js",

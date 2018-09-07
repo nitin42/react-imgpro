@@ -10,12 +10,12 @@ const output = () => ({
 });
 
 const externals = () => ({
-  "browser-image-size": "browser-image-size",
-  "react": "react",
-  "prop-types": "prop-types",
-  "react-progressive-image": "react-progressive-image",
-  "window-or-global": "window-or-global"
-})
+  'browser-image-size': 'browser-image-size',
+  react: 'react',
+  'prop-types': 'prop-types',
+  'react-progressive-image': 'react-progressive-image',
+  'window-or-global': 'window-or-global'
+});
 
 const jsLoader = () => ({
   test: /\.js$/,
@@ -24,22 +24,21 @@ const jsLoader = () => ({
   use: 'babel-loader'
 });
 
-const plugins = () => (
-  [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': 'production'
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyJSPlugin()
-  ]
-);
+const plugins = () => [
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
+  }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': 'production'
+  }),
+  new webpack.optimize.ModuleConcatenationPlugin(),
+  new UglifyJSPlugin()
+];
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.js'),
+  mode: 'production',
   output: output(),
   target: 'web',
   externals: externals(),
@@ -48,4 +47,4 @@ module.exports = {
     rules: [jsLoader()]
   },
   plugins: plugins()
-}
+};
