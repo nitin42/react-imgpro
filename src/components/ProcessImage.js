@@ -9,8 +9,8 @@ import { noJimpInstance, webWorkerInfo } from '../utils/errorMsg';
 import { setItem, getItem, removeItem } from '../utils/storage';
 import ROOT from '../utils/build';
 import MainPropTypes from '../validators/props';
-
-const processImage = require('../utils/options');
+import worker from 'workerize-loader!../worker';
+import processImage from '../utils/options';
 
 class ProcessImage extends Component {
   static propTypes = MainPropTypes;
@@ -37,10 +37,7 @@ class ProcessImage extends Component {
     this.checkStorageSupport();
 
     if (typeof Worker !== 'undefined' && !this.props.disableWebWorker) {
-      this.worker = work(require.resolve('../worker.js'));
-      // this.worker = new NewWorker();
-
-      this.sendPropsToWorker(this.props, this.worker);
+      this.worker = worker();
     }
   };
 
@@ -56,11 +53,11 @@ class ProcessImage extends Component {
 
   componentDidUpdate = () => {
     if (this.props.image && !this.props.disableRerender) {
-      if (typeof Worker !== 'undefined' && !this.props.disableWebWorker) {
-        this.sendPropsToWorker(this.props, this.worker);
-      } else {
-        this.processInMainThread(this.props);
-      }
+      this.processInMainThreadOrInWebWorker(
+        this.worker,
+        this.props,
+        this.myStorage
+      );
     }
   };
 
@@ -130,28 +127,20 @@ class ProcessImage extends Component {
     });
   };
 
-  processInWebWorker = (worker, props, storageReference) => {
+  processInWebWorker = async (worker, props, storageReference) => {
     if (worker !== null) {
-      worker.onmessage = e => {
-        // avoid loop
-        if (e.data.src !== this.state.src || e.data.err !== this.state.err) {
-          this.setState({ src: e.data.src, err: e.data.err });
-          setItem('placeholder', e.data.src, storageReference);
-          this.passPropsToParent(props, e.data.src, e.data.err);
-          if (typeof props.onProcessFinish === 'function') {
-            props.onProcessFinish();
-          }
-        }
-      };
-    }
-  };
-
-  sendPropsToWorker = (props, worker) => {
-    if (worker !== null) {
-      worker.postMessage({
+      const result = await worker.process({
         props: filterPropsToListen(props),
         image: props.image
       });
+      if (result.src !== this.state.src || result.err !== this.state.err) {
+        this.setState({ src: result.src, err: result.err });
+        setItem('placeholder', result.src, storageReference);
+        this.passPropsToParent(props, result.src, result.err);
+        if (typeof props.onProcessFinish === 'function') {
+          props.onProcessFinish();
+        }
+      }
     }
   };
 

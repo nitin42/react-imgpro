@@ -44,7 +44,13 @@ module.exports = {
   externals: externals(),
   devtool: 'inline-source-map',
   module: {
-    rules: [jsLoader()]
+    rules: [
+      jsLoader(),
+      {
+        loader: 'workerize-loader',
+        options: { inline: true }
+      }
+    ]
   },
   plugins: plugins()
 };
