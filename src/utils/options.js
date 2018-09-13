@@ -215,4 +215,4 @@ function processImage(image, props, ROOT) {
     .containImage(image, contain);
 }
 
-module.exports = processImage;
+export default processImage;
