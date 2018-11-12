@@ -6,7 +6,8 @@ const output = () => ({
   filename: '[name].js',
   path: path.resolve(__dirname, '../build'),
   publicPath: '/',
-  libraryTarget: 'umd'
+  libraryTarget: 'umd',
+  globalObject: 'this'
 });
 
 const externals = () => ({
