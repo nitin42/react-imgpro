@@ -1,5 +1,5 @@
 import processImage from './utils/options';
-const defaultCdn = 'https://unpkg.com/jimp@0.3.9/browser/lib/jimp.min.js';
+const defaultCdn = 'https://unpkg.com/jimp@0.5.6/browser/lib/jimp.min.js';
 
 export function process(data) {
   // how to ensure Jimp can work?
