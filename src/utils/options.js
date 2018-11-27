@@ -161,9 +161,14 @@ function processImage(image, props, ROOT) {
 
   image.__proto__.cropImage = function(image, crop) {
     return crop !== undefined
-      ? image.crop(setter(crop.x, 0), setter(crop.y, 0), setter(crop.w, 0), setter(crop.h, 0)
+      ? image.crop(
+          setter(crop.x, 0),
+          setter(crop.y, 0),
+          setter(crop.w, 0),
+          setter(crop.h, 0)
+        )
       : image.pass(image);
-  }
+  };
 
   image.__proto__.changeBrightness = function(image, brightness) {
     return changeImageAppearence(brightness, image, 'brightness');
