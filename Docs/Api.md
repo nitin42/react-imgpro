@@ -7,21 +7,20 @@
 It takes an image, applies desired filters, resizes the image (if) and returns a base64 image.
 
 ```jsx
-<ProcessImage 
-  image={some_image_url_or_path} 
-  resize={{ width: 400, height: 400  }} 
+<ProcessImage
+  image={some_image_url_or_path}
+  resize={{ width: 400, height: 400 }}
   processedImage={(src, err) => this.setState({ src, err })}
 />
 ```
 
 It does not change the original image. It clones the supplied image and passes it to the filter chain to be processed.
 
-It uses [`react-progressive-image`](https://github.com/FormidableLabs/react-progressive-image) for placeholder image until the image is processed and displayed. 
+It uses [`react-progressive-image`](https://github.com/FormidableLabs/react-progressive-image) for placeholder image until the image is processed and displayed.
 
 By default, the image is processed in a web worker instead of main thread for better performance and responsive UI. You can disable this by setting the value of `disableWebWorker` to `true`.
 
 ## Props
-
 
 ### resize
 
@@ -34,16 +33,31 @@ It takes image width, height and a resize mode.
 **resize modes**
 
 You can pass these values to `mode`
+
 * [neighbor](https://en.wikipedia.org/wiki/Image_scaling)
 * [bilinear](https://en.wikipedia.org/wiki/Image_scaling)
 * [bicubic](https://en.wikipedia.org/wiki/Image_scaling)
 * [hermite](https://en.wikipedia.org/wiki/Hermite_interpolation)
 * bezier
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} resize={{ width: 500, height: 500, mode: 'bicubic' }} />
+```
+
+### crop
+
+It takes x and y coordinates and a width and height.
+
+**Type** - `object`
+
+**Default** - `{ w: AUTO, h: AUTO, x: 0, y: 0 }`
+
+**Example** -
+
+```jsx
+<ProcessImage image={image} crop={{ w: 100, h: 20, x: 20, y: 40 }}>
 ```
 
 ### quality
@@ -100,7 +114,7 @@ invert the image colors
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} invert={true} />
@@ -116,7 +130,7 @@ This sets the alpha channel to **opaque** for every pixel.
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} opaque={true} />
@@ -130,7 +144,7 @@ creates a reddish brown tone in an image.
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} sepia={true} />
@@ -146,7 +160,7 @@ mix pixels of two colors
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} dither565={true} />
@@ -162,7 +176,7 @@ scale an image by a factor
 
 **Default** - `AUTO`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} scale={4} />
@@ -176,7 +190,7 @@ scale an image to the largest size that fits inside the given width and height
 
 **Default** - `{}`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} scaleToFit={{ width: 500, height: 500 }} />
@@ -190,7 +204,7 @@ flip the direction of an image
 
 **Default** - { horizontal: `false`, vertical: `false` }
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} flip={{ horizontal: true }}
@@ -204,7 +218,7 @@ rotate the image
 
 **Default** - `{}`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} rotate={{ degree: 75, mode: 'bilinear' }}
@@ -218,7 +232,7 @@ change the brightness level of an image. It takes value from `-1` to `1`.
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} brightness={0.5} />
@@ -230,7 +244,7 @@ change the contrast level of an image. It also takes value from `-1` to `1`.
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} contrast={0.3} />
@@ -242,7 +256,7 @@ fades an image by factor `0 - 1`.
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} fade={0.8} />
@@ -254,7 +268,7 @@ multiply the alpha channel by each pixel by the factor f, 0 - 1. Alternative to 
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} opacity={0.8} />
@@ -266,7 +280,7 @@ fast blur the image by r pixels. It takes a value from `1` - `100`.
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} blur={20} />
@@ -278,7 +292,7 @@ apply a posterization effect with n level. It takes a value from `1` - `100`.
 
 **Type** - `number`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} posterize={50} />
@@ -303,7 +317,7 @@ scale the image to the given width and height, some parts of the image may be cl
 * `vertical_bottom`
 * `vertical_middle`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} cover={{ width: 400, height: 400, mode: 'horizontal_center' }} />
@@ -326,7 +340,7 @@ scale the image to the given width and height, some parts of the image may be le
 * `vertical_bottom`
 * `vertical_middle`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} contain={{ width: 400, height: 400, mode: 'horizontal_center' }} />
@@ -365,6 +379,7 @@ colors = {
 ```
 
 > Details given below are taken from [Jimp]() docs.
+
 * `lighten` - Lighten the color by a given amount, from 0 to 100. Providing 100 will always return white.
 * `brighten` - Brighten the color by a given amount, from 0 to 100.
 * `darken` - Darken the color by a given amount, from 0 to 100. Providing 100 will always return black.
@@ -388,7 +403,7 @@ localStorage for storing the edited image.
 
 **Default** - `true`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} storage={false} />
@@ -402,37 +417,38 @@ disable the web worker and process the image in the main thread (not recommended
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} disableWebWorker={true} />
 ```
 
-If you disable the web worker, you will need to add [this](https://github.com/nitin42/react-imgpro/blob/master/src/jimp.min.js) file in your `index.html` in order to access `Jimp` instance. 
+If you disable the web worker, you will need to add [this](https://github.com/nitin42/react-imgpro/blob/master/src/jimp.min.js) file in your `index.html` in order to access `Jimp` instance.
 
 ### disableRerender
-disable the process image in re-render  by options changed (recommended use with worker)
+
+disable the process image in re-render by options changed (recommended use with worker)
 
 **Type** - `boolean`
 
 **Default** - `false`
 
-**Example** - 
+**Example** -
 
 ```jsx
 <ProcessImage image={image} disableRerender={true} />
 ```
 
 ### customCdn
-support you can add custom cdn for jimp
 
+support you can add custom cdn for jimp
 
 **Type** - `string`
 
 **Example** -
 
 ```jsx
-<ProcessImage image={image} customCdn={"https://...."} />
+<ProcessImage image={image} customCdn={'https://....'} />
 ```
 
 ### onProcessFinish
@@ -453,5 +469,3 @@ a callback on process finished
   }}
 />
 ```
-
-
