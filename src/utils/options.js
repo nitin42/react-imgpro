@@ -103,6 +103,17 @@ function processImage(image, props, ROOT) {
       : image.pass(image);
   };
 
+  image.__proto__.cropImage = function(image, crop) {
+    return crop !== undefined
+      ? image.crop(
+          setter(crop.x, AUTOMEASURE),
+          setter(crop.y, AUTOMEASURE),
+          setter(crop.width, 0),
+          setter(crop.height, 0)
+        )
+      : image.pass(image);
+  };
+
   image.__proto__.changeImageQuality = function(image, quality) {
     return changeImageAppearence(quality, image, 'quality');
   };
@@ -155,17 +166,6 @@ function processImage(image, props, ROOT) {
       ? image.rotate(
           setter(rotate.degree, 0),
           setMode(rotate, RESIZE_MODES, false)
-        )
-      : image.pass(image);
-  };
-
-  image.__proto__.cropImage = function(image, crop) {
-    return crop !== undefined
-      ? image.crop(
-          setter(crop.x, 0),
-          setter(crop.y, 0),
-          setter(crop.w, 0),
-          setter(crop.h, 0)
         )
       : image.pass(image);
   };

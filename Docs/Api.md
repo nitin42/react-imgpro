@@ -52,7 +52,7 @@ It takes x and y coordinates and a width and height.
 
 **Type** - `object`
 
-**Default** - `{ w: AUTO, h: AUTO, x: 0, y: 0 }`
+**Default** - `{ width: AUTO, height: AUTO, x: 0, y: 0 }`
 
 **Example** -
 

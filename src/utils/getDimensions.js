@@ -1,5 +1,6 @@
 let getSize = (props, original, attr) => {
   if (props.resize !== undefined) return props.resize[attr];
+  if (props.crop !== undefined) return props.crop[attr];
   if (props.contain !== undefined) return props.contain[attr];
   if (props.cover !== undefined) return props.cover[attr];
   if (props.scaleToFit !== undefined) return props.scaleToFit[attr];
