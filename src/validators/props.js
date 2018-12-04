@@ -33,6 +33,13 @@ const rotatePropType = PropTypes.shape({
   mode: PropTypes.string
 });
 
+const cropPropType = PropTypes.shape({
+  x: PropTypes.number,
+  y: PropTypes.number,
+  w: PropTypes.number,
+  h: PropTypes.number
+});
+
 const mixPropType = PropTypes.shape({
   color: PropTypes.string,
   amount: PropTypes.number
@@ -69,6 +76,7 @@ const MainPropTypes = {
   colors: colorsPropType,
   dither565: PropTypes.bool,
   flip: flipPropType,
+  crop: cropPropType,
   fade: PropTypes.number,
   greyscale: PropTypes.bool,
   invert: PropTypes.bool,

@@ -11,6 +11,7 @@
   * [ProcessImage component](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#component)
   * [props](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#props)
     * [resize](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#resize)
+    * [crop](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#crop)
     * [quality](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#quality)
     * [greyscale](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#greyscale)
     * [normalize](https://github.com/nitin42/react-imgpro/blob/master/Docs/Api.md#normalize)

@@ -21,7 +21,8 @@ function processImage(image, props, ROOT) {
     fade,
     opacity,
     blur,
-    posterize
+    posterize,
+    crop
   } = props;
 
   function MODE(algorithm) {
@@ -98,6 +99,17 @@ function processImage(image, props, ROOT) {
           setter(resize.width, AUTOMEASURE),
           setter(resize.height, AUTOMEASURE),
           setMode(resize, RESIZE_MODES, ROOT.RESIZE_BILINEAR)
+        )
+      : image.pass(image);
+  };
+
+  image.__proto__.cropImage = function(image, crop) {
+    return crop !== undefined
+      ? image.crop(
+          setter(crop.x, AUTOMEASURE),
+          setter(crop.y, AUTOMEASURE),
+          setter(crop.width, 0),
+          setter(crop.height, 0)
         )
       : image.pass(image);
   };
@@ -204,6 +216,7 @@ function processImage(image, props, ROOT) {
     .scaleToFitImage(image, scaleToFit)
     .flipImage(image, flip)
     .rotateImage(image, rotate)
+    .cropImage(image, crop)
     .changeBrightness(image, brightness)
     .changeContrast(image, contrast)
     .fadeImage(image, fade)

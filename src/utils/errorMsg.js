@@ -1,5 +1,5 @@
 const noJimpInstance = `Browser build for Jimp not found. Place this in your index.html file and restart the server - 
-<script src="https://unpkg.com/jimp@0.3.9/browser/lib/jimp.min.js"></script>
+<script src="https://unpkg.com/jimp@0.5.6/browser/lib/jimp.min.js"></script>
 `;
 
 const webWorkerInfo =
