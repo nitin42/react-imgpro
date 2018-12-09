@@ -33,6 +33,7 @@ class App extends Component {
               amount: this.state.mixAmount
             }
           }}
+          getImageRef={element => (this.image = element)}
         />
         <button
           disabled={this.state.isProcessing}
@@ -56,6 +57,13 @@ class App extends Component {
           }}
         >
           test2
+        </button>
+        <button
+          onClick={() => {
+            console.log(this.image);
+          }}
+        >
+          log ImageRef
         </button>
       </div>
     );

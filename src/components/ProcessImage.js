@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react';
 import ProgressiveImage from 'react-progressive-image';
 import size from 'browser-image-size';
 import work from 'webworkify-webpack';
@@ -146,8 +146,8 @@ class ProcessImage extends Component {
 
   worker = null;
 
-  processedImage = (image, restProps, style) => (
-    <img src={image} {...restProps} style={style} />
+  processedImage = (image, restProps, style, getImageRef) => (
+    <img src={image} {...restProps} style={style} ref={getImageRef} />
   );
 
   placeholderImage = image =>
@@ -161,7 +161,12 @@ class ProcessImage extends Component {
       placeholder={this.placeholderImage(props.image)}
     >
       {image =>
-        this.processedImage(image, restProps, this.getDefaultImageSize(props))
+        this.processedImage(
+          image,
+          restProps,
+          this.getDefaultImageSize(props),
+          props.getImageRef
+        )
       }
     </ProgressiveImage>
   );

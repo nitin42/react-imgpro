@@ -19,20 +19,21 @@
 **Example**
 
 ```jsx
+
+const mix = {
+    color: 'mistyrose',
+    amount: 10
+}
+
 class App extends React.Component {
   state = { src: '', err: null }
-  
   render() {
-    const params = {
-      mix: {
-        color: 'mistyrose',
-        amount: 10
-       }
-    }
     return (
       <ProcessImage
         image='http://365.unsplash.com/assets/paul-jarvis-9530891001e7f4ccfcef9f3d7a2afecd.jpg'
-        colors={params}
+        colors={{
+          mix
+        }}
         resize={{ width: 500, height: 500, mode: 'bilinear' }}
         processedImage={(src, err) => this.setState({ src, err, })}
       />     

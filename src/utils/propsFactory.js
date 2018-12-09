@@ -82,6 +82,7 @@ const getImageProps = props => {
     disableRerender,
     customCdn,
     onProcessFinish,
+    getImageRef,
     ...rest
   } = props;
 
