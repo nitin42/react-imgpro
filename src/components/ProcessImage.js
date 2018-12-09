@@ -1,4 +1,4 @@
-import React, { Component, forwardRef } from 'react';
+import React, { Component } from 'react';
 import ProgressiveImage from 'react-progressive-image';
 import size from 'browser-image-size';
 import work from 'webworkify-webpack';
