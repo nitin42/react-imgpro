@@ -85,6 +85,7 @@ const getImageProps = props => {
     customCdn,
     onProcessFinish,
     background,
+    getImageRef,
     ...rest
   } = props;
 

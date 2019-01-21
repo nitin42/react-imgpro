@@ -94,7 +94,8 @@ const MainPropTypes = {
   scaleToFit: scaleToFitPropType,
   disableRerender: PropTypes.bool,
   customCdn: PropTypes.string,
-  onProcessFinish: PropTypes.func
+  onProcessFinish: PropTypes.func,
+  getImageRef: PropTypes.func
 };
 
 export default MainPropTypes;

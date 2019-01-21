@@ -483,3 +483,18 @@ a callback on process finished
   }}
 />
 ```
+
+### getImageRef
+
+**Type** - `function`
+
+**Example** -
+
+get image ref 
+
+```jsx
+<ProcessImage
+  image={src}
+  getImageRef={image=>this.image=image}
+/>
+```
