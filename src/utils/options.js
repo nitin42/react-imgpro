@@ -22,7 +22,8 @@ function processImage(image, props, ROOT) {
     opacity,
     blur,
     posterize,
-    crop
+    crop,
+    background
   } = props;
 
   function MODE(algorithm) {
@@ -170,6 +171,12 @@ function processImage(image, props, ROOT) {
       : image.pass(image);
   };
 
+  image.__proto__.applyBackground = function(image, background) {
+    return background !== undefined
+      ? image.background(background)
+      : image.pass(image);
+  };
+
   image.__proto__.changeBrightness = function(image, brightness) {
     return changeImageAppearence(brightness, image, 'brightness');
   };
@@ -204,6 +211,7 @@ function processImage(image, props, ROOT) {
 
   return image
     .clone()
+    .applyBackground(image, background)
     .resizeAnImage(image, resize)
     .changeImageQuality(image, quality)
     .applyGreyscale(image, greyscale)
