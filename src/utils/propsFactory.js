@@ -21,7 +21,8 @@ const filterPropsToListen = props => {
     opacity,
     blur,
     posterize,
-    colors
+    colors,
+    background
   } = props;
 
   return {
@@ -46,7 +47,8 @@ const filterPropsToListen = props => {
     opacity,
     blur,
     posterize,
-    colors
+    colors,
+    background
   };
 };
 
@@ -82,6 +84,7 @@ const getImageProps = props => {
     disableRerender,
     customCdn,
     onProcessFinish,
+    background,
     getImageRef,
     ...rest
   } = props;
