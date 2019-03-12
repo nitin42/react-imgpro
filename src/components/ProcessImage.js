@@ -131,7 +131,8 @@ class ProcessImage extends Component {
     if (worker !== null) {
       const result = await worker.process({
         props: filterPropsToListen(props),
-        image: props.image
+        image: props.image,
+        customCdn: props.customCdn
       });
       if (result.src !== this.state.src || result.err !== this.state.err) {
         this.setState({ src: result.src, err: result.err });
