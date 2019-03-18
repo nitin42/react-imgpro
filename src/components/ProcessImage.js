@@ -97,9 +97,14 @@ class ProcessImage extends Component {
   clearStorage = () => root.localStorage.removeItem('placeholder');
 
   getOriginalImageSize = props => {
-    size(props.image).then(size =>
-      this.setState({ height: size.height, width: size.width })
-    );
+    size(props.image)
+      .then(size => this.setState({ height: size.height, width: size.width }))
+      .catch(() => {
+        if (props.processedImage) {
+          const err = new Error('Unable to get original size of image');
+          props.processedImage('', err);
+        }
+      });
   };
 
   getDefaultImageSize = props => {
@@ -114,25 +119,44 @@ class ProcessImage extends Component {
   myStorage = null;
 
   processInMainThread = props => {
-    ROOT.read(props.image).then(image => {
-      processImage(image, props, ROOT).getBase64(ROOT.AUTO, (err, src) => {
-        if (this.state.src !== src || this.state.err !== err) {
-          this.setState({ src, err });
-          this.passPropsToParent(props, src, err);
-          if (typeof props.onProcessFinish === 'function') {
-            props.onProcessFinish();
+    ROOT.read(props.image)
+      .then(image => {
+        processImage(image, props, ROOT).getBase64(ROOT.AUTO, (err, src) => {
+          if (this.state.src !== src || this.state.err !== err) {
+            this.setState({ src, err });
+            this.passPropsToParent(props, src, err);
+            if (typeof props.onProcessFinish === 'function') {
+              props.onProcessFinish();
+            }
           }
+        });
+      })
+      .catch(err => {
+        this.passPropsToParent(props, '', result.err);
+        if (typeof props.onProcessFinish === 'function') {
+          props.onProcessFinish();
         }
+        return;
       });
-    });
   };
 
   processInWebWorker = async (worker, props, storageReference) => {
     if (worker !== null) {
-      const result = await worker.process({
-        props: filterPropsToListen(props),
-        image: props.image
-      });
+      const result = await worker
+        .process({
+          props: filterPropsToListen(props),
+          image: props.image
+        })
+        .catch(err => ({ err }));
+
+      if (typeof result.src === 'undefined' && result.err) {
+        this.passPropsToParent(props, '', result.err);
+        if (typeof props.onProcessFinish === 'function') {
+          props.onProcessFinish();
+        }
+        return;
+      }
+
       if (result.src !== this.state.src || result.err !== this.state.err) {
         this.setState({ src: result.src, err: result.err });
         setItem('placeholder', result.src, storageReference);
