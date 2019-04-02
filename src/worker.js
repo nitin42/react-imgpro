@@ -3,7 +3,7 @@ const defaultCdn = 'https://unpkg.com/jimp@0.6.0/browser/lib/jimp.min.js';
 
 export function process(data) {
   // how to ensure Jimp can work?
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     try {
       if (!Jimp) {
       }
@@ -13,13 +13,17 @@ export function process(data) {
       importScripts(cdn);
     }
 
-    Jimp.read(data.image).then(function(image) {
-      processImage(image, data.props, Jimp).getBase64(Jimp.AUTO, function(
-        err,
-        src
-      ) {
-        resolve({ src, err });
+    Jimp.read(data.image)
+      .then(image => {
+        processImage(image, data.props, Jimp).getBase64(
+          Jimp.AUTO,
+          (err, src) => {
+            resolve({ src, err });
+          }
+        );
+      })
+      .catch(err => {
+        reject(err);
       });
-    });
   });
 }
