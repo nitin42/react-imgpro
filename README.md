@@ -1,3 +1,5 @@
+**This project is no longer maintained.**
+
 # react-imgpro
 
 [![Build Status](https://travis-ci.org/nitin42/react-imgpro.svg?branch=master)](https://travis-ci.org/nitin42/react-imgpro)
